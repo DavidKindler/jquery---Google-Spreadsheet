@@ -23,7 +23,7 @@ ddl denotes "drop down list".
 
 
   table_template :	Template for table body. This must be displayed as return function. You can use the cell[] array to arrange cell data. For example:
-  function(cell){return '<tr><td><a target="_new" href="'+cell[2]+'">'+cell[1]+'</a></td><td>'+cell[3]+'</td><td>'+cell[4]+'</td><td>'+cell[5]+'</td></tr>'}
+  function(cell){return '\<tr><td><a target="_new" href="'+cell[2]+'">'+cell[1]+'</a></td><td>'+cell[3]+'</td><td>'+cell[4]+'</td><td>'+cell[5]+'</td></tr>'}
   Note: table_head works in conjunction with table_template.
 
 
