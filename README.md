@@ -22,9 +22,9 @@ table_head :	Template for table head whcih can include filter definitions. By de
 ddl denotes "drop down list".
 
 
-table_template :	Template for table body. This must be displayed as return function. You can use the cell[] array to arrange cell data. For example:
-function(cell){return '<tr><td><a target="_new" href="'+cell[2]+'">'+cell[1]+'</a></td><td>'+cell[3]+'</td><td>'+cell[4]+'</td><td>'+cell[5]+'</td></tr>'}
-Note: table_head works in conjunction with table_template.
+  table_template :	Template for table body. This must be displayed as return function. You can use the cell[] array to arrange cell data. For example:
+  function(cell){return '<tr><td><a target="_new" href="'+cell[2]+'">'+cell[1]+'</a></td><td>'+cell[3]+'</td><td>'+cell[4]+'</td><td>'+cell[5]+'</td></tr>'}
+  Note: table_head works in conjunction with table_template.
 
 
 filters: default is true for column filtering. Column filtering can be text or select. Assign attribute 'filter-type=ddl' for select list in table_head.
@@ -43,8 +43,11 @@ Classes and elements IDs are assigned which can be used to further style the tab
 
 
  .filterColumns : class used for row of filters
+ 
  #Colnum (eg. #Col1, Col2...): Element ID assigned to each table column. One based index.
+ 
  #filterTextnum (eg. #filterText1, #filterText2...)	: Element ID assigned to each filter.
+ 
  .filterText: Class assigned to each filter.
 
 Visit the Demo page which will illustrate the use and provide examples of features.
