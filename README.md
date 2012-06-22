@@ -42,10 +42,10 @@ A callback function can be assigned in order to perform post processing needs. F
 Classes and elements IDs are assigned which can be used to further style the table.
 
 
-.filterColumns : class used for row of filters
-#Colnum (eg. #Col1, Col2...): Element ID assigned to each table column. One based index.
-#filterTextnum (eg. #filterText1, #filterText2...)	: Element ID assigned to each filter.
-.filterText: Class assigned to each filter.
+ .filterColumns : class used for row of filters
+ #Colnum (eg. #Col1, Col2...): Element ID assigned to each table column. One based index.
+ #filterTextnum (eg. #filterText1, #filterText2...)	: Element ID assigned to each filter.
+ .filterText: Class assigned to each filter.
 
 Visit the Demo page which will illustrate the use and provide examples of features.
 
