@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>get Google Spreadsheet</title>
+<style>
+
+table.Table3 thead td {
+	border-bottom:2px solid black;
+}
+table.Table3 {
+	width:60%;
+	border-spacing:0px;
+}
+table.Table3 td {
+	border-bottom:1px solid #ccc;
+	height:40px;
+}
+
+table.Table4 {width:500px;}
+table.Table4 td {height:25px;}
+
+.evenRow {background-color:#FFFFCC;}
+.oddRow { background-color:#eee;}
+
+.oneRow {background-color:#ccc;}
+.anotherRow  { background-color:#ffccff;}
+
+xmp, plaintext, pre {margin-top:5px; padding:10px; background-color:#FFCCFF; }
+
+</style>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js"></script>
+<script type="text/javascript" src='jquery.GoogleSpreadsheet.js'></script>
+
+<script type="text/javascript">
+
+$(function() {
+
+
+$('#table1').GoogleSpreadsheet({
+	'key': '0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE'   
+	})
+
+
+$('#table2').GoogleSpreadsheet({
+	'key': '0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE'   	
+	, 'table_head' : '<thead><tr><th filter-type="ddl">Code</th><th >Title</th><th filter-type="ddl">Description</th><th filter-type="ddl">Parent Filter</th><th filter-type="ddl">Subfilter</th></tr></thead>'
+    , 'table_template': function(cell){return '<tr><td>'+cell[1]+'</td><td>'+cell[2]+'</td><td>'+cell[3]+'</td><td>'+cell[5]+'</td><td>'+cell[6]+'</td></tr>'}
+	, 'subfilters' : { '4': '5'}				 
+	})
+	
+$('#table3').GoogleSpreadsheet({
+	'key': '0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE'	       
+	, 'GS_Table_class' : 'Table3'
+	, 'table_head' : '<thead><tr><th filter-type="ddl">Code</th><th >Title</th><th filter-type="ddl">Description</th><th filter-type="ddl">Parent Filter</th><th filter-type="ddl">Subfilter</th></tr></thead>'
+    , 'table_template': function(cell){if (cell[4]) return '<tr><td><a target="_new" href="'+cell[4]+'">'+cell[1]+'</a></td><td>'+cell[2]+'</td><td>'+cell[3]+'</td><td>'+cell[5]+'</td><td>'+cell[6]+'</td></tr>'}	
+	 , 'alternateRowClassNames' : ['evenRow','oddRow']
+	 , 'subfilters' : { '4': '5'}		
+	 
+	})
+
+	
+$('#table4').GoogleSpreadsheet({
+	'key': '0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE'
+	, 'GS_Table_class' : 'Table4'  
+	, 'filters': false
+	, 'table_head' : '<thead><tr><th filter-type="ddl">Code</th><th >Title</th><th filter-type="ddl">Description</th><th filter-type="ddl">Parent Filter</th><th filter-type="ddl">Subfilter</th></tr></thead>'
+    , 'table_template': function(cell){if (cell[4])  return '<tr><td><a target="_new" href="'+cell[4]+'">'+cell[1]+'</a></td><td>'+cell[2]+'</td><td>'+cell[3]+'</td><td>'+cell[5]+'</td><td>'+cell[6]+'</td></tr>'}	
+	 ,  'alternateRowClassNames' : ['oneRow','anotherRow']	 	
+	})
+	
+
+  
+}); //$(function() {
+	
+
+</script>
+<body >
+<h2> Google Spreadsheet test data (<a href="https://docs.google.com/spreadsheet/pub?key=0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE" target="_blank">link to table</a>)</h2>
+<iframe width='800' height='200' frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE&output=html&widget=true'></iframe>
+
+
+<h2>Example 1: Default - no options set</h2>
+<div id="table1"></div>
+<br/>
+<pre>$('#table1').GoogleSpreadsheet({<br>	'key': '0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE'   <br>	})</pre>
+<h2>Example 2: Drop down lists and parent-sub filter set</h2>
+<div id="table2"></div>
+<br/>
+<pre>$('#table2').GoogleSpreadsheet({<br>	'key': '0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE'   	<br>	, 'table_head' : '&lt;thead&gt;&lt;tr&gt;&lt;th filter-type=&quot;ddl&quot;&gt;Code&lt;/th&gt;&lt;th &gt;Title&lt;/th&gt;&lt;th filter-type=&quot;ddl&quot;&gt;<br>                   Description&lt;/th&gt;&lt;th filter-type=&quot;ddl&quot;&gt;Parent Filter&lt;/th&gt;&lt;th filter-type=&quot;ddl&quot;&gt;<br>                   Subfilter&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;'<br>  	, 'table_template': function(cell){return '&lt;tr&gt;&lt;td&gt;'+cell[1]+'&lt;/td&gt;&lt;td&gt;'+cell[2]+'&lt;/td&gt;<br>                       &lt;td&gt;'+cell[3]+'&lt;/td&gt;&lt;td&gt;'+cell[5]+'&lt;/td&gt;&lt;td&gt;'+cell[6]+'&lt;/td&gt;&lt;/tr&gt;'}<br>	, 'subfilters' : { '4': '5'}				 <br>	})</pre>
+<h2>Example 3: Parent-Sub filters, table class, alternate row classes, table head and template options set. Callback function assigned to remove waiting indicator.</h2>
+<div id="table3"></div>
+<br/>
+<pre>$('#table3').GoogleSpreadsheet({<br>	'key': '0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE'	       <br>	, 'GS_Table_class' : 'Table3'<br>	, 'table_head' : '&lt;thead&gt;&lt;tr&gt;&lt;th filter-type=&quot;ddl&quot;&gt;Code&lt;/th&gt;&lt;th &gt;Title&lt;/th&gt;&lt;th filter-type=&quot;ddl&quot;&gt;<br>                     Description&lt;/th&gt;&lt;th filter-type=&quot;ddl&quot;&gt;Parent Filter&lt;/th&gt;&lt;th filter-type=&quot;ddl&quot;&gt;<br>                     Subfilter&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;'<br>  	, 'table_template': function(cell){if (cell[4]) return '&lt;tr&gt;&lt;td&gt;&lt;a target=&quot;_new&quot; href=&quot;'+<br>                      cell[4]+'&quot;&gt;'+cell[1]+'&lt;/a&gt;&lt;/td&gt;&lt;td&gt;'+cell[2]+'&lt;/td&gt;&lt;td&gt;'+cell[3]+'&lt;/td&gt;<br>                     &lt;td&gt;'+cell[5]+'&lt;/td&gt;&lt;td&gt;'+cell[6]+'&lt;/td&gt;&lt;/tr&gt;'}	<br>	 , 'alternateRowClassNames' : ['evenRow','oddRow']<br>	 , 'subfilters' : { '4': '5'}		<br>	}, 	function(){ $('#waiting').hide()});
+)</pre>
+<h2>Example 4: No filters, alternate row classes, table head and template options set</h2>
+<div id="table4"></div>
+<pre>$('#table4').GoogleSpreadsheet({<br>	'key': '0Aldl0jBslKHJdHdUR1VoNFNyUVBMR0luVTFUelRFRVE'<br>	, 'GS_Table_class' : 'Table4'  <br>	, 'filters': false<br>	, 'table_head' : '&lt;thead&gt;&lt;tr&gt;&lt;th filter-type=&quot;ddl&quot;&gt;Code&lt;/th&gt;&lt;th &gt;Title&lt;/th&gt;&lt;th filter-type=&quot;ddl&quot;&gt;<br>                   Description&lt;/th&gt;&lt;th filter-type=&quot;ddl&quot;&gt;Parent Filter&lt;/th&gt;&lt;th filter-type=&quot;ddl&quot;&gt;<br>                   Subfilter&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;'<br>  	, 'table_template': function(cell){if (cell[4])  return '&lt;tr&gt;&lt;td&gt;&lt;a target=&quot;_new&quot; href=&quot;'+<br>                        cell[4]+'&quot;&gt;'+cell[1]+'&lt;/a&gt;&lt;/td&gt;&lt;td&gt;'+cell[2]+'&lt;/td&gt;&lt;td&gt;'+cell[3]+'&lt;/td&gt;<br>                        &lt;td&gt;'+cell[5]+'&lt;/td&gt;&lt;td&gt;'+cell[6]+'&lt;/td&gt;&lt;/tr&gt;'}	<br>	 ,  'alternateRowClassNames' : ['oneRow','anotherRow']	 	<br>	})<br>	
+</pre>
+
+
+</body>
+</html>
