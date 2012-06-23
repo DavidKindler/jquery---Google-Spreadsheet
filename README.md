@@ -5,7 +5,7 @@ jquery plugin to manage Google Spreadsheet
 
 <p>This plugin will retrieve the first sheet of data from a public Google Spreadsheet and display the data in a table format with filters. <br>
 Minimum requirement is the public key of the spreadsheet which you can obtain by going to<em> File -&gt; Publish to the web</em> in the Google Doc.</p>
-<p><img src="GS_demo1.png" width="722" height="679" alt="Publish to the web"></p>
+<p><img src="https://github.com/DavidKindler/jquery---Google-Spreadsheet/blob/master/GS_demo1.png" width="722" height="679" alt="Publish to the web"></p>
 <p>By default all columns will be displayed. The first row of the table will be used as the header of the table and all columns will be text filtered.</p>
 <p><a href="demo.html">Demo</a></p>
 <h3>Options:</h3>
